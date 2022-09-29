@@ -186,7 +186,7 @@ LOGGING = {
             'handlers': ['console', 'mail_admins', 'file'],
             'level': 'INFO',
         },
-    'pybo': {
+        'pybo': {
             'handlers': ['console', 'file'],
             'level': 'INFO',
         },
