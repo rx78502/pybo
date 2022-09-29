@@ -1,10 +1,13 @@
+import logging
+
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 
 from pybo.models import Question
-import logging
+
 logger = logging.getLogger('pybo')
+
 
 def index(request):
     logger.info("INFO 레벨로 출력")
@@ -15,7 +18,7 @@ def index(request):
         question_list = question_list.filter(
             Q(subject__icontains=kw) |  # 제목
             Q(content__icontains=kw) |  # 내용
-            Q(answer__content__icontains=kw) |  # 답변 내용
+            Q(answer__content__icontains=kw) |  # 답변내용
             Q(author__username__icontains=kw) |  # 질문 글쓴이
             Q(answer__author__username__icontains=kw)  # 답변 글쓴이
         ).distinct()
